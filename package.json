@@ -1,0 +1,16 @@
+{
+  "name": "intern-showcase",
+  "version": "1.0.0",
+  "description": "Full-stack intern portfolio platform",
+  "type": "module",
+  "scripts": {
+    "start": "cd server && npm start",
+    "dev": "cd server && npm run dev",
+    "install": "cd server && npm install && cd ../client && npm install"
+  },
+  "workspaces": [
+    "server",
+    "client"
+  ]
+}
+
