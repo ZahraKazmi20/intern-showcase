@@ -1,6 +1,6 @@
 import express from "express";
 import { protect } from "../middleware/auth.js";
-import upload from "../middleware/upload.js";
+import { upload, uploadErrorHandler } from "../middleware/upload.js";
 import {
   createProject,
   getMyProjects,
@@ -17,9 +17,9 @@ router.get("/public/:userSlug", getPublicPortfolio);
 router.get("/share/:projectSlug", getProjectBySlug);
 
 // Private routes (require login)
-router.post("/", protect, upload.single("image"), createProject);
+router.post("/", protect, upload.single("image"), uploadErrorHandler, createProject);
 router.get("/mine", protect, getMyProjects);
-router.put("/:id", protect, upload.single("image"), updateProject);
+router.put("/:id", protect, upload.single("image"), uploadErrorHandler, updateProject);
 router.delete("/:id", protect, deleteProject);
 
 export default router;
